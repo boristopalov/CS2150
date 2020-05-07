@@ -1,0 +1,26 @@
+C008 000		jmp 	start 	skip over the variables
+0000 001 num1	dw  	0		int num1
+0000 002 num2 	dw 		0 		int num2
+0000 003 num3 	dw 		0 		int num3
+0000 004						leave space for changes
+0000 005
+0000 006
+0000 007
+1000 008		start 	readH 	read num1
+4001 009 		store	num1	
+1000 00a 		readH			read num2
+4002 00b		store	num2
+1000 00c		readH			read num3
+4003 00d		store	num3
+5002 00e		add		num2	num2 + num3
+5001 00f		add		num1	current sum(num2 + num3) + num1
+1800 010		printH		
+D013 011		jmpe	xit		print the numbers and exit the program if sum = 0
+C008 012		jmp		start	start over if sum != 0
+3001 013 xit	load	num1	print num1
+1800 014 		printH
+3002 015		load	num2	print num2
+1800 016		printH
+3003 017		load	num3	print num3
+1800 018		printH
+0000 019		halt			ends the program

@@ -1,0 +1,23 @@
+c005 000 		    jmp 	start	
+0016 001 size 		dw 		20 		int size
+0000 002 count		dw		0		int count
+0001 003 one		dw		1			
+3000 004 a			dw		3000	array base	
+3002 005 start		load 	count 	set count to 0 
+6002 006 			sub		count
+4002 007 			store	count
+b000 008
+b000 009
+3001 00a loop		load	size	if count > size jump to xit
+6002 00b			sub		count
+e016 00c			jmpl	xit
+3004 00d			load    a		load each instruction and print it out
+5002 00e			add		count
+4010 00f			store	doit
+0000 010 doit		dw		0		load instruction
+1800 011			printH
+3002 012			load	count	i += 1
+5003 013			add		one
+4002 014			store	count
+c00a 015			jmp		loop	
+0000 016 xit		halt

@@ -1,0 +1,40 @@
+c00a 000  	 	jmp		start	skip over the variables
+0001 001 i	 	dw	    1		int i
+0000 002 max 	dw		0 		int sum
+0022 003 arr	dw		30		initial index of a[]
+0006 004 maxi 	dw 		6
+3000 005 loadit dw		3000	
+0001 006 one 	dw 		1	
+0000 007 curr	dw		0		current element
+0000 008
+0000 009
+3022 00a start	load 	a
+4002 00b 		store   max
+3004 00c loop	load 	maxi
+6001 00d		sub		i		if (maxi - i <= 0) go to xit
+E01e 00e 		jmpl	xit
+d01e 00f		jmpe	xit
+3005 010		load	loadit
+5003 011		add		arr
+5001 012		add		i
+4017 013		store	curr	
+3001 014 		load	i
+5006 015		add		one		i += 1 
+4001 016		store	i
+0000 017 curr	dw		0		load current element
+6002 018 		sub		max		if (current element > max) update max
+E00c 019 		jmpl	loop	
+d00c 01a		jmpe	loop
+5002 01b		add		max
+4002 01c		store	max	
+c00c 01d		jmp 	loop	
+3002 01e xit	load 	max		print max
+1800 01f		printH	
+0000 020		halt
+0000 021
+0005 022 a		dw 		5		int a[6]
+0065 023
+ffa3 024
+0123 025
+f5bd 026
+5612 027	
